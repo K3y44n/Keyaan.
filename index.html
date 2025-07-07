@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Keyaan | Creative Work</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+  <style>
+    /* --- Keep your existing styles intact --- */
+
+    /* Modal container for About Me and My Work articles */
+    #about-me, #my-work {
+      display: none; /* hidden by default, shown as modal */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: #222;
+      max-width: 900px;
+      width: 90vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      z-index: 10001;
+    }
+
+    /* Show modal when active */
+    #about-me.active, #my-work.active {
+      display: block;
+    }
+
+    /* Modal overlay */
+    #modalOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 10000;
+    }
+    #modalOverlay.active {
+      display: block;
+    }
+
+    /* Close button inside modals */
+    .modalCloseBtn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+      z-index: 10100;
+    }
+    .modalCloseBtn:hover {
+      color: #f25c54;
+    }
+
+    /* Make sure your other styles remain untouched */
+  </style>
+</head>
+
+<body class="is-preload">
+
+  <!-- Header -->
+  <header id="header">
+    <div class="content">
+      <h1><a href="#">Keyaan</a></h1>
+      <p>Welcome! Click below to learn more about me or see my creative work.</p>
+      <ul class="actions">
+        <li><a href="#" id="btnAbout" class="button icon solid fa-user">About Me</a></li>
+        <li><a href="#" id="btnWork" class="button icon solid fa-edit">My Work</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Modal Overlay -->
+  <div id="modalOverlay"></div>
+
+  <!-- About Me Modal -->
+  <article id="about-me" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="aboutMeTitle" aria-hidden="true">
+    <span class="modalCloseBtn" role="button" aria-label="Close About Me">&times;</span>
+    <h2 id="aboutMeTitle">About Me</h2>
+    <p>Hi, I’m <strong>Keyaan</strong> — a 13-year-old student currently in <strong>9th grade</strong> living in <strong>Sharjah, UAE</strong>.</p>
+    <p>I enjoy digital creativity, especially video editing and design. During my free time, I experiment with tools and software to create unique edits. I'm passionate about learning and improving, and I'm also trying to make money with my skills.</p>
+    <div class="icons major" aria-label="About Me Icons">
+      <span class="icon solid fa-edit" title="Editing"></span>
+      <span class="icon solid fa-lightbulb" title="Creativity"></span>
+      <span class="icon solid fa-rocket" title="Growth"></span>
+    </div>
+  </article>
+
+  <!-- My Work Modal -->
+  <article id="my-work" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="myWorkTitle" aria-hidden="true">
+    <span class="modalCloseBtn" role="button" aria-label="Close My Work">&times;</span>
+    <h2 id="myWorkTitle">My Work</h2>
+    <p>Here are some of my edits! Click a button to watch each video in a pop-up window.</p>
+    <div class="actions special" role="list">
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.06.36 PM.mp4');return false;">Project 1</a>
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.06.41 PM.mp4');return false;">Project 2</a>
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.07.18 PM.mp4');return false;">Project 3</a>
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.07.19 PM (1).mp4');return false;">Project 4</a>
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.07.19 PM.mp4');return false;">Project 5</a>
+      <a href="#" class="button" onclick="openVideo('videos/WhatsApp Video 2025-07-07 at 10.07.20 PM.mp4');return false;">Project 6</a>
+    </div>
+  </article>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal-content">
+      <span class="close" role="button" aria-label="Close Video" tabindex="0" onclick="closeVideo()">&times;</span>
+      <video id="popupVideo" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <ul class="icons" role="list">
+      <li><a href="https://www.instagram.com/k3y44nnn/" target="_blank" rel="noopener noreferrer" class="icon brands fa-instagram" aria-label="Instagram"></a></li>
+    </ul>
+    <p>&copy; Keyaan</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Get elements
+    const aboutBtn = document.getElementById('btnAbout');
+    const workBtn = document.getElementById('btnWork');
+    const aboutModal = document.getElementById('about-me');
+    const workModal = document.getElementById('my-work');
+    const overlay = document.getElementById('modalOverlay');
+
+    const aboutClose = aboutModal.querySelector('.modalCloseBtn');
+    const workClose = workModal.querySelector('.modalCloseBtn');
+
+    // Open modal helper
+    function openModal(modal) {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      overlay.classList.add('active');
+      // Focus modal for accessibility
+      modal.focus();
+      // Prevent scrolling of background content
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal helper
+    function closeModal(modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('active');
+      // Restore scrolling
+      document.body.style.overflow = '';
+    }
+
+    // Button clicks open modals
+    aboutBtn.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(aboutModal);
+    });
+    workBtn.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(workModal);
+    });
+
+    // Close buttons
+    aboutClose.addEventListener('click', () => closeModal(aboutModal));
+    workClose.addEventListener('click', () => closeModal(workModal));
+
+    // Close modal on overlay click
+    overlay.addEventListener('click', () => {
+      if (aboutModal.classList.contains('active')) closeModal(aboutModal);
+      if (workModal.classList.contains('active')) closeModal(workModal);
+    });
+
+    // Close modal on Escape key
+    window.addEventListener('keydown', e => {
+      if(e.key === "Escape") {
+        if (aboutModal.classList.contains('active')) closeModal(aboutModal);
+        if (workModal.classList.contains('active')) closeModal(workModal);
+        if (document.getElementById('videoModal').style.display === 'flex') closeVideo();
+      }
+    });
+
+    // Video modal functions (same as before)
+    function openVideo(src) {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('popupVideo');
+      video.src = src;
+      modal.style.display = 'flex';
+      video.play();
+      video.focus();
+    }
+
+    function closeVideo() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('popupVideo');
+      video.pause();
+      video.currentTime = 0;
+      video.src = "";
+      modal.style.display = 'none';
+      // Return focus to My Work button
+      workBtn.focus();
+    }
+
+    // Close video modal on outside click
+    window.onclick = function(event) {
+      const modal = document.getElementById('videoModal');
+      if (event.target === modal) {
+        closeVideo();
+      }
+    }
+
+    // Close button keyboard support for video modal close
+    const closeBtn = document.querySelector('#videoModal .close');
+    closeBtn.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeVideo();
+      }
+    });
+
+  </script>
+
+</body>
+</html>
